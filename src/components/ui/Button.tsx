@@ -7,7 +7,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
         const baseStyles =
             "inline-flex items-center justify-center rounded-[10px] font-extrabold transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed";
