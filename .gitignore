@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Document files (not for version control)
+CTS - Landing Pages.docx
+CTS_Landing_Pages.zip
+/docx_extracted/

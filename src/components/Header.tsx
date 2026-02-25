@@ -32,11 +32,10 @@ export const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-                isScrolled
+            className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${isScrolled
                     ? "bg-[#1E2D4A] border-white/10 py-2"
                     : "bg-[#1B2A45] border-transparent py-4"
-            }`}
+                }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
@@ -81,7 +80,7 @@ export const Header = () => {
                             size="sm"
                             className="hidden sm:flex bg-[#1DD1A1] hover:bg-[#17B98D] text-[#1B2A45] font-semibold border-0"
                         >
-                            Get Service
+                            Book a Strategy Call
                         </Button>
 
                         {/* Mobile menu button */}
@@ -142,7 +141,7 @@ export const Header = () => {
                                     size="sm"
                                     className="w-full bg-[#1DD1A1] hover:bg-[#17B98D] text-[#1B2A45] font-semibold border-0"
                                 >
-                                    Get Service
+                                    Book a Strategy Call
                                 </Button>
                             </motion.div>
                         </nav>

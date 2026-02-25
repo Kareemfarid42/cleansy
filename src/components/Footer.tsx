@@ -32,7 +32,7 @@ const Footer = () => {
                         </div>
 
                         <p className="text-[#7FDED0] leading-relaxed">
-                            Donec fermentum aliquet leo vulputate bibendum. Nulla facilisi integer tempus mi vel nunc lacinia tempus.
+                            We help franchise systems build scalable digital foundations — combining strategy and conversion systems that drive sustainable growth.
                         </p>
 
                         <div className="flex gap-4">
@@ -56,7 +56,7 @@ const Footer = () => {
                             className="text-white"
                         />
                         <p className="text-[#7FDED0] text-sm mt-[-20px] mb-4">
-                            Donec fermentum aliquet leo vulputate bibendum. Nulla facilisi integer tempus mi vel nunc lacinia tempus.
+                            Performance marketing and digital infrastructure for franchise brands.
                         </p>
                     </div>
 
@@ -77,7 +77,7 @@ const Footer = () => {
                     <div className="flex flex-col gap-6">
                         <h4 className="text-xl font-bold text-white">Newsletter</h4>
                         <p className="text-[#7FDED0]">
-                            Cras mi ante, viverra quis odio non, tempus dictum dolor.
+                            Stay updated with franchise growth strategies and digital marketing insights.
                         </p>
 
                         <form className="relative w-full">
@@ -98,7 +98,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="pt-8 border-t border-white/10 text-[#7FDED0] text-sm">
-                    <p>© Copyright by AltDesain-Studio – All right reserved.</p>
+                    <p>© Copyright by ClienTech Solutions – All rights reserved.</p>
                 </div>
             </div>
         </footer>
