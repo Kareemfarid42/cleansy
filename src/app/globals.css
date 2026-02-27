@@ -63,7 +63,12 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Sora', 'Inter', system-ui, sans-serif;
     font-weight: 800;
   }
@@ -97,7 +102,9 @@
   }
 
   body {
-    overflow-x: hidden;
+    /* clip prevents horizontal overflow WITHOUT creating a scroll container
+       — unlike overflow:hidden which breaks position:fixed on the header */
+    overflow-x: clip;
   }
 
   img {
@@ -106,8 +113,13 @@
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .animate-marquee {

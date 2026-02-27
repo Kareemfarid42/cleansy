@@ -11,8 +11,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Cleansy - Professional Cleaning Services",
-  description: "Fast and reliable professional cleaning services for your home and office",
+  title: "ClienTech Solutions - Franchise Growth Marketing Agency",
+  description: "Performance marketing and digital infrastructure for franchise brands. We help franchise systems build scalable lead systems and conversion engines that drive sustainable growth.",
 };
 
 export default function RootLayout({
@@ -24,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${jakarta.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <Header />
         <main>{children}</main>

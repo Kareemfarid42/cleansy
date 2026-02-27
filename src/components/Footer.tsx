@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Twitter, Youtube, Instagram, Send } from "lucide-react";
-import AppDownload from "./AppDownload";
 import IconList from "./IconList";
 
 const Footer = () => {
@@ -48,16 +47,17 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* App Download Section */}
+                    {/* Our Services Links */}
                     <div className="flex flex-col gap-6">
-                        <AppDownload
-                            title="Order services more easily on our app, download now!"
-                            description=""
-                            className="text-white"
+                        <h4 className="text-xl font-bold text-white">Our Services</h4>
+                        <IconList
+                            items={[
+                                { text: "Digital Foundation & Positioning", href: "/services" },
+                                { text: "Lead Generation", href: "/services" },
+                                { text: "Automation & Follow-Up Systems", href: "/services" },
+                                { text: "Growth & Performance Optimization", href: "/services" },
+                            ]}
                         />
-                        <p className="text-[#7FDED0] text-sm mt-[-20px] mb-4">
-                            Performance marketing and digital infrastructure for franchise brands.
-                        </p>
                     </div>
 
                     {/* Information Links */}

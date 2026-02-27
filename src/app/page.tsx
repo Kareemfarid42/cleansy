@@ -11,98 +11,144 @@ import FAQAccordion from "@/components/FAQAccordion";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-20 md:pt-60 md:pb-40 overflow-hidden bg-[#F0F4F8]">
-        {/* Background Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/bg1.png"
-            alt="Background Pattern"
-            fill
-            className="object-cover object-top opacity-30"
-          />
-        </div>
+      {/* ═══════════════════════════════════════════════════════
+          HERO SECTION
+          Structure: Image 1 (Cleansy layout)
+          Content + Colors: Image 2 (CTS brand)
+      ══════════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-[#dce9f0]">
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="container mx-auto px-6 lg:px-12 max-w-7xl w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] xl:grid-cols-[1fr_500px] gap-8 xl:gap-16 items-center">
 
-            {/* Left Content */}
-            <div className="flex flex-col items-start max-w-2xl">
-              <AnimatedHeading
-                prefix="Performance Marketing for"
-                words={["Franchises", "Growth", "Scale"]}
-                postfix="That Drive Revenue"
-                className="mb-4"
-              />
+            {/* ══════════════
+                LEFT — TEXT
+            ══════════════ */}
+            <div className="flex flex-col items-start">
 
-              <p className="text-[#1B2A45] text-2xl font-bold mb-4">
+              {/* ── Heading ── */}
+              {/* "Performance Marketing for" plain teal text */}
+              <h1 className="font-extrabold leading-snug text-[#00c0a3] mb-5">
+                <span className="block text-4xl md:text-5xl mb-3 whitespace-nowrap">
+                  Marketing for
+                </span>
+
+                {/* Animated highlighted word — dark navy pill, teal text */}
+                <span className="block mb-3">
+                  <AnimatedHeading
+                    prefix=""
+                    words={["Franchises", "Growth", "Scale"]}
+                    postfix=""
+                    className="!text-4xl md:!text-5xl !text-[#00c0a3]"
+                  />
+                </span>
+
+                <span className="block text-4xl md:text-5xl">
+                  That Drive Revenue
+                </span>
+              </h1>
+
+              {/* ── Sub-heading ── */}
+              <p className="text-[#1b273d] text-lg font-bold mb-3">
                 Inconsistent Leads? Let&apos;s Fix That.
               </p>
 
-              <p className="text-text/80 text-lg mb-10 leading-relaxed max-w-lg">
-                We help franchise systems and independent franchise operators like home services, fitness studios, tutoring centers, and senior care companies build scalable digital foundations — combining strategy and conversion systems that drive sustainable growth.
+              {/* ── Body text ── */}
+              <p className="text-[#1b273d]/65 text-sm leading-relaxed max-w-sm mb-10">
+                We help franchise systems and independent franchise operators like home
+                services, fitness studios, tutoring centers, and senior care companies
+                build scalable digital foundations — combining strategy and conversion
+                systems that drive sustainable growth.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 items-center">
-                <Button variant="primary" size="lg" className="shadow-lg shadow-[#1DD1A1]/30">
-                  Get a Free Growth Audit
-                </Button>
+              {/* ── CTA Buttons ── */}
+              <div className="flex items-center gap-5 mb-10">
 
-                <button className="flex items-center gap-4 group">
-                  <div className="w-14 h-14 rounded-full border-2 border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <CalendarCheck fill="currentColor" className="ml-1" />
+                {/* Left: Play/circle icon + label (Image 1 "Play video" style) */}
+                <button className="flex items-center gap-3 group">
+                  <div className="w-12 h-12 rounded-full bg-[#00c0a3] flex items-center justify-center shrink-0 shadow-md group-hover:bg-[#1b273d] transition-colors duration-300">
+                    <CalendarCheck size={20} className="text-white" />
                   </div>
-                  <span className="font-bold text-primary text-lg">Book a Strategy Call</span>
+                  <span className="text-[#1b273d] font-semibold text-sm group-hover:text-[#00c0a3] transition-colors">
+                    Book a Strategy Call
+                  </span>
+                </button>
+
+                {/* Right: solid navy button (Image 1 "Get Service" style) */}
+                <button className="bg-[#1b273d] text-white text-sm font-bold px-7 py-3 rounded-xl hover:bg-[#00c0a3] transition-colors duration-300 shadow-md">
+                  Get a Free Growth Audit
                 </button>
               </div>
             </div>
 
-            {/* Right Content - Hero Image & Avatars */}
-            <div className="relative">
-              {/* Main Hero Image */}
-              <div className="relative z-10 mb-10 ml-auto w-full max-w-[500px]">
-                <div className="aspect-[4/5] relative rounded-[20px] overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 bg-primary/10"></div>
-                  <Image
-                    src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop"
-                    alt="Franchise Growth Marketing Professional"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+            {/* ══════════════
+                RIGHT — IMAGE
+            ══════════════ */}
+            <div className="relative flex justify-center lg:justify-end self-end">
+
+
+              {/* Arch/Tombstone container — Image 1 style */}
+              {/* elliptical top radius → true tombstone arch shape */}
+              <div
+                className="relative z-10 w-full max-w-[460px] overflow-hidden shadow-2xl"
+                style={{
+                  borderRadius: "50% 50% 28px 28px / 40% 40% 28px 28px",
+                }}
+              >
+                <Image
+                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=900&auto=format&fit=crop"
+                  alt="Franchise Growth Marketing Team"
+                  width={460}
+                  height={580}
+                  className="object-cover w-full h-full"
+                  style={{ aspectRatio: "460 / 580" }}
+                  priority
+                />
               </div>
 
-              {/* Floating Avatar Card */}
-              <div className="absolute -bottom-10 left-0 md:-left-10 z-20 bg-[#F0F4F8]/90 backdrop-blur-sm p-6 rounded-[20px] shadow-xl border border-white/50 max-w-[350px] animate-bounce-slow">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex -space-x-4">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-12 h-12 rounded-full border-2 border-white overflow-hidden relative">
+              {/* ── Social Proof Card ── overlapping bottom-left of image */}
+              {/* Styled after Image 1's card: clean white, shadow, avatar overlap + count + stars + subtitle */}
+              <div className="absolute bottom-8 -left-4 md:-left-12 z-20 bg-white rounded-2xl shadow-2xl p-5 w-[240px]">
+
+                {/* Avatar cluster */}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex -space-x-3">
+                    {[31, 32, 33].map((i) => (
+                      <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden relative shrink-0">
                         <Image
-                          src={`https://randomuser.me/api/portraits/men/${i + 30}.jpg`}
+                          src={`https://randomuser.me/api/portraits/men/${i}.jpg`}
                           alt="Franchise Owner"
                           fill
                           className="object-cover"
                         />
                       </div>
                     ))}
-                    <div className="w-12 h-12 rounded-full border-2 border-white bg-primary text-white flex items-center justify-center font-bold text-sm relative z-10">
+                    {/* "+40" badge */}
+                    <div className="w-10 h-10 rounded-full border-2 border-white bg-[#00c0a3] flex items-center justify-center font-bold text-white text-xs shrink-0 z-10">
                       +40
                     </div>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-end">
-                  <div>
-                    <div className="text-2xl font-bold text-[#1B2A45]">40+ Franchise Clients</div>
-                    <p className="text-sm text-text/60">Trusted by franchise owners</p>
-                  </div>
-                  <div className="mb-1">
-                    <RatingStars rating={5} size={20} />
-                  </div>
-                </div>
+                {/* Title */}
+                <p className="text-[#1b273d] font-extrabold text-base leading-tight">
+                  40+ Franchise Clients
+                </p>
+                {/* Subtitle */}
+                <p className="text-xs text-gray-500 mt-0.5 mb-2">
+                  Trusted by franchise owners
+                </p>
+                {/* Stars */}
+                <RatingStars rating={5} size={15} />
               </div>
+
+              {/* Decorative arch glow behind image */}
+              <div
+                className="absolute top-4 left-0 right-0 mx-auto w-[420px] h-[520px] bg-[#00c0a3]/10 -z-10"
+                style={{ borderRadius: "50% 50% 28px 28px / 40% 40% 28px 28px" }}
+              />
             </div>
+
           </div>
         </div>
       </section>

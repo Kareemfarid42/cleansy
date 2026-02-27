@@ -12,7 +12,7 @@ interface AnimatedHeadingProps {
 
 export default function AnimatedHeading({
     prefix = "Fast and Reliable",
-    words = ["Professional", "Trusted", "Quality"],
+    words = ["Growth", "Franchises", "Brands", "Scale"],
     postfix = "Cleaning Services",
     className = ""
 }: AnimatedHeadingProps) {
@@ -20,36 +20,44 @@ export default function AnimatedHeading({
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % words.length);
+            setIndex((prev) => (prev + 1) % words.length);
         }, 2500);
         return () => clearInterval(interval);
     }, [words.length]);
 
     return (
-        <div className={`flex flex-col items-start text-4xl md:text-6xl font-extrabold text-primary leading-tight ${className}`}>
-            {prefix && <span className="block mr-3 mb-2">{prefix}</span>}
+        <div className={`flex flex-col items-start font-extrabold text-[#00c0a3] leading-snug ${className}`}>
+            {prefix && <span className="block mb-2">{prefix}</span>}
 
-            <div className="inline-grid items-center justify-items-center relative overflow-hidden text-primary bg-secondary px-6 py-3 md:py-5 rounded-[20px] mb-2 mx-0 w-fit leading-none">
-                {/* Ghost element to maintain width/height based on longest word */}
-                <span className="opacity-0 col-start-1 row-start-1 select-none whitespace-nowrap">
-                    {words.reduce((a, b) => a.length > b.length ? a : b, "")}
-                </span>
-
-                <AnimatePresence mode="wait">
-                    <motion.span
-                        key={index}
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -50, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="col-start-1 row-start-1 text-center whitespace-nowrap"
+            {/* Fixed height + overflow-hidden: the box slides in/out without collapsing the line */}
+            <div className="mb-2 overflow-hidden" style={{ height: '3.4rem' }}>
+                <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                        key={words[index]}
+                        /* whole box enters from right, exits to left */
+                        initial={{ x: '-100%', opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: '100%', opacity: 0 }}
+                        transition={{ duration: 0.42, ease: [0.4, 0, 0.2, 1] }}
+                        className="h-full flex items-center"
                     >
-                        {words[index]}
-                    </motion.span>
+                        <span
+                            className="whitespace-nowrap text-[#00c0a3] rounded-[16px] inline-flex items-center text-inherit font-extrabold"
+                            style={{
+                                backgroundColor: '#1b273d',
+                                paddingTop: 8,
+                                paddingBottom: 8,
+                                paddingLeft: 20,
+                                paddingRight: 20,
+                            }}
+                        >
+                            {words[index]}
+                        </span>
+                    </motion.div>
                 </AnimatePresence>
             </div>
 
-            <span className="block">{postfix}</span>
+            {postfix && <span className="block">{postfix}</span>}
         </div>
     );
 }
