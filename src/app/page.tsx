@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { CalendarCheck } from "lucide-react";
 import AnimatedHeading from "@/components/AnimatedHeading";
@@ -7,6 +10,34 @@ import Button from "@/components/ui/Button";
 import CompanyLogos from "@/components/CompanyLogos";
 import RatingStars from "@/components/ui/RatingStars";
 import FAQAccordion from "@/components/FAQAccordion";
+
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
+};
+
+const popIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, delay: 0.6, ease: "backOut" as const } }
+};
 
 export default function Home() {
   return (
@@ -24,11 +55,16 @@ export default function Home() {
             {/* ══════════════
                 LEFT — TEXT
             ══════════════ */}
-            <div className="flex flex-col items-start">
+            <motion.div
+              className="flex flex-col items-start"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
 
               {/* ── Heading ── */}
               {/* "Performance Marketing for" plain teal text */}
-              <h1 className="font-extrabold leading-snug text-[#00c0a3] mb-5">
+              <motion.h1 variants={fadeUpVariant} className="font-extrabold leading-snug text-[#00c0a3] mb-5">
                 <span className="block text-4xl md:text-5xl mb-3 whitespace-nowrap">
                   Marketing for
                 </span>
@@ -46,40 +82,40 @@ export default function Home() {
                 <span className="block text-4xl md:text-5xl">
                   That Drive Revenue
                 </span>
-              </h1>
+              </motion.h1>
 
               {/* ── Sub-heading ── */}
-              <p className="text-[#1b273d] text-lg font-bold mb-3">
+              <motion.p variants={fadeUpVariant} className="text-[#1b273d] text-lg font-bold mb-3">
                 Inconsistent Leads? Let&apos;s Fix That.
-              </p>
+              </motion.p>
 
               {/* ── Body text ── */}
-              <p className="text-[#1b273d]/65 text-sm leading-relaxed max-w-sm mb-10">
+              <motion.p variants={fadeUpVariant} className="text-[#1b273d]/65 text-sm leading-relaxed max-w-sm mb-10">
                 We help franchise systems and independent franchise operators like home
                 services, fitness studios, tutoring centers, and senior care companies
                 build scalable digital foundations — combining strategy and conversion
                 systems that drive sustainable growth.
-              </p>
+              </motion.p>
 
               {/* ── CTA Buttons ── */}
-              <div className="flex items-center gap-5 mb-10">
+              <motion.div variants={fadeUpVariant} className="flex items-center gap-5 mb-10">
 
-                {/* Left: Play/circle icon + label (Image 1 "Play video" style) */}
-                <button className="flex items-center gap-3 group">
+                {/* Left: Calendar icon + label */}
+                <a href="/contact" className="flex items-center gap-3 group">
                   <div className="w-12 h-12 rounded-full bg-[#00c0a3] flex items-center justify-center shrink-0 shadow-md group-hover:bg-[#1b273d] transition-colors duration-300">
                     <CalendarCheck size={20} className="text-white" />
                   </div>
                   <span className="text-[#1b273d] font-semibold text-sm group-hover:text-[#00c0a3] transition-colors">
                     Book a Strategy Call
                   </span>
-                </button>
+                </a>
 
-                {/* Right: solid navy button (Image 1 "Get Service" style) */}
-                <button className="bg-[#1b273d] text-white text-sm font-bold px-7 py-3 rounded-xl hover:bg-[#00c0a3] transition-colors duration-300 shadow-md">
+                {/* Right: solid navy button */}
+                <a href="/contact" className="bg-[#1b273d] text-white text-sm font-bold px-7 py-3 rounded-xl hover:bg-[#00c0a3] transition-colors duration-300 shadow-md">
                   Get a Free Growth Audit
-                </button>
-              </div>
-            </div>
+                </a>
+              </motion.div>
+            </motion.div>
 
             {/* ══════════════
                 RIGHT — IMAGE
@@ -89,7 +125,10 @@ export default function Home() {
 
               {/* Arch/Tombstone container — Image 1 style */}
               {/* elliptical top radius → true tombstone arch shape */}
-              <div
+              <motion.div
+                variants={slideInRight}
+                initial="hidden"
+                animate="visible"
                 className="relative z-10 w-full max-w-[460px] overflow-hidden shadow-2xl"
                 style={{
                   borderRadius: "50% 50% 28px 28px / 40% 40% 28px 28px",
@@ -104,11 +143,16 @@ export default function Home() {
                   style={{ aspectRatio: "460 / 580" }}
                   priority
                 />
-              </div>
+              </motion.div>
 
               {/* ── Social Proof Card ── overlapping bottom-left of image */}
               {/* Styled after Image 1's card: clean white, shadow, avatar overlap + count + stars + subtitle */}
-              <div className="absolute bottom-8 -left-4 md:-left-12 z-20 bg-white rounded-2xl shadow-2xl p-5 w-[240px]">
+              <motion.div
+                variants={popIn}
+                initial="hidden"
+                animate="visible"
+                className="absolute bottom-8 -left-4 md:-left-12 z-20 bg-white rounded-2xl shadow-2xl p-5 w-[240px]"
+              >
 
                 {/* Avatar cluster */}
                 <div className="flex items-center gap-2 mb-3">
@@ -140,7 +184,7 @@ export default function Home() {
                 </p>
                 {/* Stars */}
                 <RatingStars rating={5} size={15} />
-              </div>
+              </motion.div>
 
               {/* Decorative arch glow behind image */}
               <div
@@ -167,110 +211,231 @@ export default function Home() {
       </section>
 
       {/* Services / What We Do Section */}
-      <section className="py-20 bg-[#F0F4F8]">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-white font-bold text-lg mb-4 bg-[#1B2A45] px-4 py-2 rounded-full inline-block">
+      <section
+        id="services"
+        className="relative py-24 overflow-hidden"
+        style={{
+          background: "#dce9f0",
+          backgroundImage:
+            "linear-gradient(rgba(27,42,69,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(27,42,69,0.05) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      >
+        <div className="container mx-auto px-4 max-w-6xl">
+
+          {/* ── Section Header ── */}
+          <motion.div
+            className="text-center mb-20"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <span className="text-white font-bold text-sm bg-[#1B2A45] px-5 py-2 rounded-full inline-block tracking-widest uppercase mb-5">
               What We Do
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] mb-6">
-              A Complete Digital Growth System for Franchises
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] leading-tight mt-4 mb-5">
+              A Complete Digital Growth<br className="hidden md:block" /> System for Franchises
             </h2>
-            <p className="text-text/80 text-lg leading-relaxed">
-              We help franchise brands and independent franchise owners build strong digital foundations, scalable lead systems, and automated follow-up processes that drive measurable, location-level growth.
+            <p className="text-[#1B2A45]/65 text-lg max-w-2xl mx-auto leading-relaxed">
+              We help franchise brands build scalable lead systems, automated follow-up, and digital foundations that drive measurable location-level growth.
             </p>
+          </motion.div>
+
+          {/* ══════════════════════════════
+              PART 1 — Staggered Cards
+          ══════════════════════════════ */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-start"
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {/* Card 1 — DARK, elevated */}
+            <motion.div
+              variants={fadeUpVariant}
+              className="bg-[#1B2A45] rounded-3xl p-8 shadow-2xl flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div className="w-14 h-14 bg-[#1DD1A1]/15 rounded-2xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#1DD1A1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <h3 className="text-[#1DD1A1] text-lg font-extrabold leading-snug">Digital Foundation &amp; Positioning</h3>
+              <p className="text-white/60 text-sm leading-relaxed flex-1">
+                We build or fix the digital base your franchise grows on — stronger brand authority, higher conversions, scalable growth.
+              </p>
+              <span className="inline-flex items-center gap-1 text-[#1DD1A1] font-bold text-sm cursor-pointer hover:gap-2 transition-all">Learn more →</span>
+            </motion.div>
+
+            {/* Card 2 — LIGHT, pushed down */}
+            <motion.div
+              variants={fadeUpVariant}
+              className="bg-white rounded-3xl p-8 shadow-xl flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300 lg:mt-14"
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "rgba(27,42,69,0.07)" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#1B2A45]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" />
+                </svg>
+              </div>
+              <h3 className="text-[#1B2A45] text-lg font-extrabold leading-snug">Lead Generation</h3>
+              <p className="text-[#1B2A45]/55 text-sm leading-relaxed flex-1">
+                Consistent, trackable leads across every territory. Predictable cost-per-lead, more booked appointments, better ROI.
+              </p>
+              <span className="inline-flex items-center gap-1 text-[#1B2A45] font-bold text-sm cursor-pointer hover:text-[#1DD1A1] hover:gap-2 transition-all">Learn more →</span>
+            </motion.div>
+
+            {/* Card 3 — DARK, elevated */}
+            <motion.div
+              variants={fadeUpVariant}
+              className="bg-[#1B2A45] rounded-3xl p-8 shadow-2xl flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300"
+            >
+              <div className="w-14 h-14 bg-[#1DD1A1]/15 rounded-2xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#1DD1A1]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-[#1DD1A1] text-lg font-extrabold leading-snug">Automation &amp; Follow-Up Systems</h3>
+              <p className="text-white/60 text-sm leading-relaxed flex-1">
+                Stop leads slipping through the cracks. Higher show-up rates, more closed deals, far less manual chaos at every location.
+              </p>
+              <span className="inline-flex items-center gap-1 text-[#1DD1A1] font-bold text-sm cursor-pointer hover:gap-2 transition-all">Learn more →</span>
+            </motion.div>
+
+            {/* Card 4 — LIGHT, pushed down */}
+            <motion.div
+              variants={fadeUpVariant}
+              className="bg-white rounded-3xl p-8 shadow-xl flex flex-col gap-4 hover:-translate-y-1 transition-transform duration-300 lg:mt-14"
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "rgba(27,42,69,0.07)" }}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 text-[#1B2A45]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-[#1B2A45] text-lg font-extrabold leading-snug">Growth &amp; Performance Optimization</h3>
+              <p className="text-[#1B2A45]/55 text-sm leading-relaxed flex-1">
+                Turn marketing data into scalable decisions. Lower acquisition cost, smarter scaling, happier franchisees across all locations.
+              </p>
+              <span className="inline-flex items-center gap-1 text-[#1B2A45] font-bold text-sm cursor-pointer hover:text-[#1DD1A1] hover:gap-2 transition-all">Learn more →</span>
+            </motion.div>
+          </motion.div>
+
+          {/* ══════════════════════════════════════════
+              PART 2 — Central Image + Floating Pills
+          ══════════════════════════════════════════ */}
+          <div className="relative max-w-3xl mx-auto mt-28 flex justify-center">
+
+            {/* Soft glow behind image */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[340px] h-[340px] rounded-full bg-[#1DD1A1]/12 blur-3xl -z-10" />
+
+            {/* Main professional image */}
+            <motion.div
+              variants={fadeUpVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className="relative z-10"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500&auto=format&fit=crop&crop=top"
+                alt="ClienTech Marketing Expert"
+                width={320}
+                height={440}
+                className="object-cover object-top rounded-3xl shadow-2xl"
+                style={{ maxHeight: 440 }}
+              />
+            </motion.div>
+
+            {/* ── Pill 1 — Left, floats up/down ── */}
+            <motion.div
+              className="hidden md:flex absolute top-1/4 -left-4 lg:-left-24 z-20 bg-white rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[220px]"
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              animate={{ y: [0, -10, 0] }}
+            >
+              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-[#1DD1A1]/50">
+                <Image src="https://randomuser.me/api/portraits/men/31.jpg" alt="James R." fill className="object-cover" />
+              </div>
+              <div>
+                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Doubled our lead volume!&rdquo;</p>
+                <p className="text-[#1DD1A1] text-[10px] font-semibold mt-0.5">James R.</p>
+              </div>
+            </motion.div>
+
+            {/* ── Pill 2 — Right, floats up/down with offset phase ── */}
+            <motion.div
+              className="hidden md:flex absolute top-1/3 -right-4 lg:-right-24 z-20 bg-[#1DD1A1] rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[220px]"
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              animate={{ y: [0, -10, 0] }}
+            >
+              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-white/40">
+                <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." fill className="object-cover" />
+              </div>
+              <div>
+                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Best ROI we&apos;ve seen.&rdquo;</p>
+                <p className="text-[#1B2A45]/60 text-[10px] font-semibold mt-0.5">Sarah M.</p>
+              </div>
+            </motion.div>
+
+            {/* ── Pill 3 — Bottom center, floats ── */}
+            <motion.div
+              className="hidden md:flex absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 bg-white rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[250px]"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.7 }}
+              animate={{ y: [-6, 4, -6] }}
+            >
+              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-[#1DD1A1]/50">
+                <Image src="https://randomuser.me/api/portraits/men/22.jpg" alt="David C." fill className="object-cover" />
+              </div>
+              <div>
+                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Seamless automation setup.&rdquo;</p>
+                <p className="text-[#1DD1A1] text-[10px] font-semibold mt-0.5">David C.</p>
+              </div>
+            </motion.div>
+
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-            {/* Service 1 */}
-            <div className="bg-white rounded-[20px] p-8 w-full max-w-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-black/5 group hover:bg-[#1B2A45]">
-              <div className="w-20 h-20 bg-[#F0F4F8] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1DD1A1]">
-                <Image
-                  src="https://cdn-icons-png.flaticon.com/512/2942/2942076.png"
-                  alt="Digital Foundation"
-                  width={40}
-                  height={40}
-                  className="opacity-80"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-[#1B2A45] mb-4 group-hover:text-[#1DD1A1]">Digital Foundation<br />&amp; Positioning</h3>
-              <p className="text-text/70 mb-6 group-hover:text-white/70">
-                We fix or build the digital base your franchise grows on. Stronger brand authority + higher conversion rates + scalable growth base.
-              </p>
-              <Link href="/services" className="inline-flex items-center text-[#1B2A45] font-bold group-hover:text-[#1DD1A1]">
-                Read More <span className="ml-2">→</span>
-              </Link>
-            </div>
+          {/* ══════════════════════════════
+              PART 3 — Bottom CTA
+          ══════════════════════════════ */}
+          <motion.div
+            className="text-center mt-28"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h3 className="text-4xl lg:text-5xl font-bold text-[#1B2A45] max-w-4xl mx-auto leading-tight mb-8">
+              See inconsistent leads hurting your franchise? Hire our team — no stress, just growth.
+            </h3>
+            <button className="bg-[#1B2A45] text-white font-bold px-10 py-4 rounded-full text-base hover:bg-[#1DD1A1] hover:text-[#1B2A45] transition-all duration-300 shadow-xl inline-flex items-center gap-2 group">
+              Let&apos;s chat <span className="text-xl group-hover:rotate-12 transition-transform duration-300">💬</span>
+            </button>
+          </motion.div>
 
-            {/* Service 2 */}
-            <div className="bg-white rounded-[20px] p-8 w-full max-w-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-black/5 group hover:bg-[#1B2A45]">
-              <div className="w-20 h-20 bg-[#F0F4F8] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1DD1A1]">
-                <Image
-                  src="https://cdn-icons-png.flaticon.com/512/3050/3050365.png"
-                  alt="Lead Generation"
-                  width={40}
-                  height={40}
-                  className="opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-[#1B2A45] mb-4 group-hover:text-[#1DD1A1]">Lead<br />Generation</h3>
-              <p className="text-text/70 mb-6 group-hover:text-white/70">
-                We generate consistent, trackable leads across territories. Predictable cost-per-lead. More booked appointments. Better ROI.
-              </p>
-              <Link href="/services" className="inline-flex items-center text-[#1B2A45] font-bold group-hover:text-[#1DD1A1]">
-                Read More <span className="ml-2">→</span>
-              </Link>
-            </div>
-
-            {/* Service 3 */}
-            <div className="bg-white rounded-[20px] p-8 w-full max-w-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-black/5 group hover:bg-[#1B2A45]">
-              <div className="w-20 h-20 bg-[#F0F4F8] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1DD1A1]">
-                <Image
-                  src="https://cdn-icons-png.flaticon.com/512/3050/3050454.png"
-                  alt="Automation"
-                  width={40}
-                  height={40}
-                  className="opacity-80"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-[#1B2A45] mb-4 group-hover:text-[#1DD1A1]">Automation &amp;<br />Follow-Up Systems</h3>
-              <p className="text-text/70 mb-6 group-hover:text-white/70">
-                We stop leads from slipping through the cracks. Higher show-up rates. More closed deals. Less manual chaos.
-              </p>
-              <Link href="/services" className="inline-flex items-center text-[#1B2A45] font-bold group-hover:text-[#1DD1A1]">
-                Read More <span className="ml-2">→</span>
-              </Link>
-            </div>
-
-            {/* Service 4 */}
-            <div className="bg-white rounded-[20px] p-8 w-full max-w-[300px] transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-black/5 group hover:bg-[#1B2A45]">
-              <div className="w-20 h-20 bg-[#F0F4F8] rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1DD1A1]">
-                <Image
-                  src="https://cdn-icons-png.flaticon.com/512/2829/2829699.png"
-                  alt="Growth Optimization"
-                  width={40}
-                  height={40}
-                  className="opacity-80"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-[#1B2A45] mb-4 group-hover:text-[#1DD1A1]">Growth &amp; Performance<br />Optimization</h3>
-              <p className="text-text/70 mb-6 group-hover:text-white/70">
-                We turn marketing data into scalable growth decisions. Lower acquisition cost + smarter scaling + happier franchisees.
-              </p>
-              <Link href="/services" className="inline-flex items-center text-[#1B2A45] font-bold group-hover:text-[#1DD1A1]">
-                Read More <span className="ml-2">→</span>
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* About / Built for Franchise Growth Section */}
-      <section className="py-20 lg:py-32 bg-white overflow-hidden">
+      <section id="about" className="py-20 lg:py-32 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Image */}
-            <div className="relative">
+            <motion.div
+              className="relative"
+              variants={slideInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <div className="relative z-10 rounded-[20px] rounded-br-[200px] overflow-hidden shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1000&auto=format&fit=crop"
@@ -289,10 +454,16 @@ export default function Home() {
 
               {/* Background blob */}
               <div className="absolute -bottom-10 -right-10 w-full h-full bg-[#F0F4F8] rounded-[50px] -z-10"></div>
-            </div>
+            </motion.div>
 
             {/* Right Content */}
-            <div className="flex flex-col items-start">
+            <motion.div
+              className="flex flex-col items-start"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+            >
               <span className="text-white font-bold text-lg mb-4 bg-[#1B2A45] px-4 py-2 rounded-full inline-block">
                 Built for Franchise Growth
               </span>
@@ -319,7 +490,7 @@ export default function Home() {
               </div>
 
               <Button size="lg">Learn More About Us</Button>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -354,60 +525,82 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-[#F0F4F8]">
+      <section id="results" className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-white font-bold text-lg mb-4 bg-[#1B2A45] px-4 py-2 rounded-full inline-block">
+          <motion.div
+            className="text-center max-w-2xl mx-auto mb-14"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <span className="text-white font-bold text-sm mb-4 bg-[#1B2A45] px-5 py-2 rounded-full inline-block tracking-widest uppercase">
               Client Results
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] mb-6">
-              What Franchise Owners Say About Us
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] mt-5 mb-3">
+              What Franchise Owners Say
             </h2>
-          </div>
+            <p className="text-[#1B2A45]/55 text-lg">
+              Real experiences. <strong className="text-[#1B2A45]">Real results.</strong>
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {[
               {
                 name: "James Rodriguez",
                 role: "Home Services Franchise Owner",
-                quote: "CTS transformed our lead generation completely. We went from inconsistent month-to-month results to a predictable pipeline of qualified leads across all 3 of our locations."
+                quote: "CTS transformed our lead generation completely. We went from inconsistent results to a predictable pipeline of qualified leads across all 3 locations.",
+                img: "https://randomuser.me/api/portraits/men/20.jpg",
               },
               {
                 name: "Sarah Mitchell",
                 role: "Fitness Studio Franchisee",
-                quote: "The automation systems they set up saved us hours every week. Leads now get followed up automatically, our show-up rates doubled, and our cost-per-acquisition dropped by 40%."
+                quote: "The automation systems they set up saved us hours every week. Show-up rates doubled and cost-per-acquisition dropped by 40%.",
+                img: "https://randomuser.me/api/portraits/women/44.jpg",
               },
               {
                 name: "David Chen",
                 role: "Senior Care Franchise Director",
-                quote: "What sets CTS apart is they understand the franchise model. They built systems that work at both the corporate level and for each individual location. Incredibly transparent reporting too."
-              }
-            ].map((testimonial, i) => (
-              <div key={i} className="bg-white p-8 rounded-[20px] shadow-lg border border-black/5 relative hover:-translate-y-2 transition-transform duration-300">
-                <div className="absolute -top-6 right-8 w-12 h-12 bg-[#1DD1A1] rounded-full flex items-center justify-center text-white text-3xl font-serif">
-                  &quot;
-                </div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden relative">
-                    <Image
-                      src={`https://randomuser.me/api/portraits/men/${i * 10 + 20}.jpg`}
-                      alt={testimonial.name}
-                      fill
-                      className="object-cover"
-                    />
+                quote: "CTS understands the franchise model. Systems that work at both corporate level and for each individual location. Transparent reporting too.",
+                img: "https://randomuser.me/api/portraits/men/54.jpg",
+              },
+            ].map((t, i) => (
+              <motion.div key={i} variants={fadeUpVariant} className="flex flex-col gap-4">
+                {/* Video thumbnail */}
+                <div className="relative rounded-2xl overflow-hidden group cursor-pointer" style={{ aspectRatio: "4/3" }}>
+                  <Image
+                    src={t.img}
+                    alt={t.name}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-[#1B2A45]/30 group-hover:bg-[#1B2A45]/50 transition-colors duration-300" />
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-[#1DD1A1] transition-all duration-300">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-[#1B2A45] ml-1 group-hover:text-white transition-colors duration-300">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-[#1B2A45]">{testimonial.name}</h4>
-                    <p className="text-sm text-text/60">{testimonial.role}</p>
-                    <RatingStars rating={5} size={14} className="mt-1" />
-                  </div>
                 </div>
-                <p className="text-text/80 leading-relaxed italic">
-                  &quot;{testimonial.quote}&quot;
-                </p>
-              </div>
+                {/* Info below */}
+                <div>
+                  <h4 className="font-extrabold text-[#1B2A45] text-lg leading-snug">{t.name}</h4>
+                  <p className="text-[#1DD1A1] font-semibold text-sm mb-2">{t.role}</p>
+                  <p className="text-[#1B2A45]/60 text-sm leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -483,9 +676,15 @@ export default function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="py-20 bg-[#F0F4F8]">
+      <section id="blog" className="py-20 bg-[#F0F4F8]">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <motion.div
+            className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             <div className="max-w-xl">
               <span className="text-white font-bold text-lg mb-4 bg-[#1B2A45] px-4 py-2 rounded-full inline-block">
                 Our Blog
@@ -495,9 +694,15 @@ export default function Home() {
               </h2>
             </div>
             <Button variant="outline">View All Posts</Button>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
             {[
               {
                 title: "How to Build a Scalable Lead System for Your Franchise",
@@ -515,7 +720,7 @@ export default function Home() {
                 img: "1518770660439-4636190af475"
               }
             ].map((post, i) => (
-              <div key={i} className="bg-white rounded-[20px] overflow-hidden hover:shadow-xl transition-all duration-300 group">
+              <motion.div key={i} variants={fadeUpVariant} className="bg-white rounded-[20px] overflow-hidden hover:shadow-xl transition-all duration-300 group">
                 <div className="relative h-60 overflow-hidden">
                   <Image
                     src={`https://images.unsplash.com/photo-${post.img}?q=80&w=800&auto=format&fit=crop`}
@@ -540,14 +745,14 @@ export default function Home() {
                     Read More
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#1B2A45] relative overflow-hidden">
+      <section id="contact" className="py-20 bg-[#1B2A45] relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#1DD1A1]/5 skew-x-12 transform origin-top-right"></div>
 

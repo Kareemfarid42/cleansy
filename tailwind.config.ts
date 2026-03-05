@@ -39,8 +39,12 @@ const config: Config = {
                 "link-hover": "hsl(168 76% 42%)",
             },
             fontFamily: {
-                sans: ["var(--font-jakarta)", "Inter", "system-ui", "sans-serif"],
-                display: ["Sora", "Inter", "system-ui", "sans-serif"],
+                // Body / paragraphs → Century Gothic (system font, same as client_tech)
+                sans: ['"Century Gothic"', 'AppleGothic', 'system-ui', 'sans-serif'],
+                // Big section titles (h1, h2) → League Spartan
+                display: ['var(--font-league-spartan)', 'sans-serif'],
+                // Card titles & sub-headings (h3–h6) → Poppins
+                subheading: ['var(--font-poppins)', 'sans-serif'],
             },
             fontSize: {
                 h1: ["46px", { lineHeight: "1.2", fontWeight: "800" }],

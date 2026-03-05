@@ -59,18 +59,25 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    /* Paragraphs & general text → Century Gothic (matches client_tech) */
+    font-family: "Century Gothic", AppleGothic, system-ui, sans-serif;
   }
 
   h1,
-  h2,
+  h2 {
+    /* Big section titles → League Spartan (matches client_tech) */
+    font-family: var(--font-league-spartan), sans-serif;
+    font-weight: 800;
+  }
+
   h3,
   h4,
   h5,
   h6 {
-    font-family: 'Sora', 'Inter', system-ui, sans-serif;
-    font-weight: 800;
+    /* Card titles & sub-headings → Poppins (matches client_tech) */
+    font-family: var(--font-poppins), sans-serif;
+    font-weight: 600;
   }
 }
 
@@ -99,12 +106,12 @@
 @layer utilities {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
-  body {
-    /* clip prevents horizontal overflow WITHOUT creating a scroll container
-       — unlike overflow:hidden which breaks position:fixed on the header */
-    overflow-x: clip;
+  /* Offset anchor scroll so sections don't hide under the fixed header */
+  section[id] {
+    scroll-margin-top: 100px;
   }
 
   img {

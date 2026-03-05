@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 interface FAQItem {
@@ -22,37 +23,51 @@ export default function FAQAccordion({ items, className = '' }: FAQAccordionProp
     };
 
     return (
-        <div className={`w-full space-y-4 ${className}`}>
+        <div className={`w-full space-y-3 ${className}`}>
             {items.map((item) => {
                 const isOpen = openItem === item.id;
 
                 return (
                     <div
                         key={item.id}
-                        className="border-2 border-primary rounded-[10px] overflow-hidden bg-background transition-all duration-300"
+                        className={`border-2 rounded-2xl overflow-hidden bg-white transition-colors duration-300 ${isOpen ? 'border-[#1DD1A1]' : 'border-[#E2E8F0]'
+                            }`}
                     >
                         <button
                             onClick={() => toggleItem(item.id)}
-                            className="w-full flex items-center justify-between p-6 text-left hover:bg-secondary/10 transition-colors"
+                            className="w-full flex items-center justify-between p-6 text-left hover:bg-[#F0F4F8] transition-colors"
                         >
-                            <span className="text-lg font-semibold text-primary pr-4">
+                            <span className={`text-base font-bold pr-4 transition-colors ${isOpen ? 'text-[#1B2A45]' : 'text-[#1B2A45]/80'}`}>
                                 {item.question}
                             </span>
-                            <ChevronDown
-                                className={`flex-shrink-0 text-primary transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
-                                    }`}
-                                size={24}
-                            />
+                            <motion.div
+                                animate={{ rotate: isOpen ? 180 : 0 }}
+                                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                className="shrink-0"
+                            >
+                                <ChevronDown
+                                    size={22}
+                                    className={`transition-colors ${isOpen ? 'text-[#1DD1A1]' : 'text-[#1B2A45]/40'}`}
+                                />
+                            </motion.div>
                         </button>
 
-                        <div
-                            className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96' : 'max-h-0'
-                                }`}
-                        >
-                            <div className="px-6 pb-6 pt-2 text-text">
-                                <p className="leading-relaxed">{item.answer}</p>
-                            </div>
-                        </div>
+                        <AnimatePresence initial={false}>
+                            {isOpen && (
+                                <motion.div
+                                    key="content"
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                    style={{ overflow: 'hidden' }}
+                                >
+                                    <div className="px-6 pb-6 pt-0">
+                                        <p className="text-[#1B2A45]/65 leading-relaxed">{item.answer}</p>
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 );
             })}
