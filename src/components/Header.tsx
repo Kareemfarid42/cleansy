@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Anchor-based navigation — all sections live on this single landing page
@@ -38,11 +38,10 @@ export const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${isScrolled
-                    ? "border-white/10 py-2"
-                    : "border-transparent py-4"
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ease-in-out ${isScrolled
+                ? "bg-neutral-950/80 backdrop-blur-lg border-b border-white/10 py-4 shadow-lg"
+                : "bg-transparent border-b border-transparent py-6"
                 }`}
-            style={{ backgroundColor: "#1b273d" }}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
@@ -52,7 +51,7 @@ export const Header = () => {
                         <a href="/" className="flex flex-col">
                             <div className="relative h-12 sm:h-14 lg:h-16 w-48">
                                 <Image
-                                    src="/logo-v3.png"
+                                    src="/logo-v4.png"
                                     alt="ClienTech Solutions"
                                     fill
                                     className="object-contain object-left"
@@ -69,7 +68,7 @@ export const Header = () => {
                                 key={item.name}
                                 href={item.href}
                                 onClick={(e) => handleNavClick(e, item.href)}
-                                className="px-3 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors whitespace-nowrap"
+                                className="px-3 py-2 text-xs font-semibold uppercase tracking-widest text-white/80 hover:text-white transition-colors duration-200 whitespace-nowrap"
                             >
                                 {item.name}
                             </a>
@@ -81,7 +80,7 @@ export const Header = () => {
                         <div className="hidden lg:flex flex-col items-center gap-0.5">
                             <a
                                 href="tel:+18002874769"
-                                className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-[#1DD1A1] transition-colors whitespace-nowrap"
+                                className="flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-primary transition-colors whitespace-nowrap"
                                 aria-label="Call us"
                             >
                                 <Phone className="w-4 h-4" />
@@ -90,8 +89,9 @@ export const Header = () => {
                             <a
                                 href="#contact"
                                 onClick={(e) => handleNavClick(e, "#contact")}
-                                className="mt-1 inline-flex items-center justify-center px-6 py-2 text-sm font-bold rounded-full bg-[#1DD1A1] text-[#1b273d] hover:bg-white transition-colors duration-200 whitespace-nowrap shadow-md"
+                                className="mt-1 inline-flex items-center justify-center gap-2 px-5 py-2 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-all duration-200 whitespace-nowrap shadow-md"
                             >
+                                <MessageSquare className="w-4 h-4" />
                                 Book a Strategy Call
                             </a>
                         </div>
@@ -130,7 +130,7 @@ export const Header = () => {
                                     <a
                                         href={item.href}
                                         onClick={(e) => handleNavClick(e, item.href)}
-                                        className="text-lg font-medium text-white/80 hover:text-white transition-colors block"
+                                        className="text-sm font-semibold uppercase tracking-widest text-white/80 hover:text-white transition-colors block"
                                     >
                                         {item.name}
                                     </a>
@@ -144,7 +144,7 @@ export const Header = () => {
                             >
                                 <a
                                     href="tel:+18002874769"
-                                    className="flex items-center gap-2 text-white/80 hover:text-[#1DD1A1] transition-colors"
+                                    className="flex items-center gap-2 text-white/80 hover:text-primary transition-colors"
                                     aria-label="Call us"
                                 >
                                     <Phone className="w-4 h-4" />
@@ -153,8 +153,9 @@ export const Header = () => {
                                 <a
                                     href="#contact"
                                     onClick={(e) => handleNavClick(e, "#contact")}
-                                    className="text-center inline-flex items-center justify-center px-6 py-3 text-sm font-bold rounded-full bg-[#1DD1A1] text-[#1b273d] hover:bg-white transition-colors duration-200 w-full"
+                                    className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-all duration-200 w-full"
                                 >
+                                    <MessageSquare className="w-4 h-4" />
                                     Book a Strategy Call
                                 </a>
                             </motion.div>

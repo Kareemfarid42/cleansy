@@ -47,7 +47,7 @@ export default function Home() {
           Structure: Image 1 (Cleansy layout)
           Content + Colors: Image 2 (CTS brand)
       ══════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-[#dce9f0]">
+      <section className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-[#0A0A0A]">
 
         <div className="container mx-auto px-6 lg:px-12 max-w-7xl w-full">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_460px] xl:grid-cols-[1fr_500px] gap-8 xl:gap-16 items-center">
@@ -85,12 +85,12 @@ export default function Home() {
               </motion.h1>
 
               {/* ── Sub-heading ── */}
-              <motion.p variants={fadeUpVariant} className="text-[#1b273d] text-lg font-bold mb-3">
+              <motion.p variants={fadeUpVariant} className="text-white text-lg font-bold mb-3">
                 Inconsistent Leads? Let&apos;s Fix That.
               </motion.p>
 
               {/* ── Body text ── */}
-              <motion.p variants={fadeUpVariant} className="text-[#1b273d]/65 text-sm leading-relaxed max-w-sm mb-10">
+              <motion.p variants={fadeUpVariant} className="text-white/70 text-sm leading-relaxed max-w-sm mb-10">
                 We help franchise systems and independent franchise operators like home
                 services, fitness studios, tutoring centers, and senior care companies
                 build scalable digital foundations — combining strategy and conversion
@@ -105,13 +105,13 @@ export default function Home() {
                   <div className="w-12 h-12 rounded-full bg-[#00c0a3] flex items-center justify-center shrink-0 shadow-md group-hover:bg-[#1b273d] transition-colors duration-300">
                     <CalendarCheck size={20} className="text-white" />
                   </div>
-                  <span className="text-[#1b273d] font-semibold text-sm group-hover:text-[#00c0a3] transition-colors">
+                  <span className="text-white font-semibold text-sm group-hover:text-[#00c0a3] transition-colors">
                     Book a Strategy Call
                   </span>
                 </a>
 
                 {/* Right: solid navy button */}
-                <a href="/contact" className="bg-[#1b273d] text-white text-sm font-bold px-7 py-3 rounded-xl hover:bg-[#00c0a3] transition-colors duration-300 shadow-md">
+                <a href="/contact" className="bg-white text-[#0A0A0A] text-sm font-bold px-7 py-3 rounded-xl hover:bg-[#00c0a3] hover:text-white transition-colors duration-300 shadow-md">
                   Get a Free Growth Audit
                 </a>
               </motion.div>
@@ -213,11 +213,10 @@ export default function Home() {
       {/* Services / What We Do Section */}
       <section
         id="services"
-        className="relative py-24 overflow-hidden"
+        className="relative py-24 overflow-hidden bg-[#0A0A0A]"
         style={{
-          background: "#dce9f0",
           backgroundImage:
-            "linear-gradient(rgba(27,42,69,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(27,42,69,0.05) 1px, transparent 1px)",
+            "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       >
@@ -234,10 +233,10 @@ export default function Home() {
             <span className="text-white font-bold text-sm bg-[#1B2A45] px-5 py-2 rounded-full inline-block tracking-widest uppercase mb-5">
               What We Do
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] leading-tight mt-4 mb-5">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mt-4 mb-5">
               A Complete Digital Growth<br className="hidden md:block" /> System for Franchises
             </h2>
-            <p className="text-[#1B2A45]/65 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/70 text-lg max-w-2xl mx-auto leading-relaxed">
               We help franchise brands build scalable lead systems, automated follow-up, and digital foundations that drive measurable location-level growth.
             </p>
           </motion.div>
@@ -321,105 +320,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* ══════════════════════════════════════════
-              PART 2 — Central Image + Floating Pills
-          ══════════════════════════════════════════ */}
-          <div className="relative max-w-3xl mx-auto mt-28 flex justify-center">
 
-            {/* Soft glow behind image */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[340px] h-[340px] rounded-full bg-[#1DD1A1]/12 blur-3xl -z-10" />
-
-            {/* Main professional image */}
-            <motion.div
-              variants={fadeUpVariant}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              className="relative z-10"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=500&auto=format&fit=crop&crop=top"
-                alt="ClienTech Marketing Expert"
-                width={320}
-                height={440}
-                className="object-cover object-top rounded-3xl shadow-2xl"
-                style={{ maxHeight: 440 }}
-              />
-            </motion.div>
-
-            {/* ── Pill 1 — Left, floats up/down ── */}
-            <motion.div
-              className="hidden md:flex absolute top-1/4 -left-4 lg:-left-24 z-20 bg-white rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[220px]"
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              animate={{ y: [0, -10, 0] }}
-            >
-              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-[#1DD1A1]/50">
-                <Image src="https://randomuser.me/api/portraits/men/31.jpg" alt="James R." fill className="object-cover" />
-              </div>
-              <div>
-                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Doubled our lead volume!&rdquo;</p>
-                <p className="text-[#1DD1A1] text-[10px] font-semibold mt-0.5">James R.</p>
-              </div>
-            </motion.div>
-
-            {/* ── Pill 2 — Right, floats up/down with offset phase ── */}
-            <motion.div
-              className="hidden md:flex absolute top-1/3 -right-4 lg:-right-24 z-20 bg-[#1DD1A1] rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[220px]"
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.5 }}
-              animate={{ y: [0, -10, 0] }}
-            >
-              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-white/40">
-                <Image src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." fill className="object-cover" />
-              </div>
-              <div>
-                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Best ROI we&apos;ve seen.&rdquo;</p>
-                <p className="text-[#1B2A45]/60 text-[10px] font-semibold mt-0.5">Sarah M.</p>
-              </div>
-            </motion.div>
-
-            {/* ── Pill 3 — Bottom center, floats ── */}
-            <motion.div
-              className="hidden md:flex absolute -bottom-6 left-1/2 -translate-x-1/2 z-20 bg-white rounded-2xl shadow-xl px-4 py-3 items-center gap-3 max-w-[250px]"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-              animate={{ y: [-6, 4, -6] }}
-            >
-              <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0 ring-2 ring-[#1DD1A1]/50">
-                <Image src="https://randomuser.me/api/portraits/men/22.jpg" alt="David C." fill className="object-cover" />
-              </div>
-              <div>
-                <p className="text-[#1B2A45] text-xs font-bold leading-snug">&ldquo;Seamless automation setup.&rdquo;</p>
-                <p className="text-[#1DD1A1] text-[10px] font-semibold mt-0.5">David C.</p>
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* ══════════════════════════════
-              PART 3 — Bottom CTA
-          ══════════════════════════════ */}
-          <motion.div
-            className="text-center mt-28"
-            variants={fadeUpVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <h3 className="text-4xl lg:text-5xl font-bold text-[#1B2A45] max-w-4xl mx-auto leading-tight mb-8">
-              See inconsistent leads hurting your franchise? Hire our team — no stress, just growth.
-            </h3>
-            <button className="bg-[#1B2A45] text-white font-bold px-10 py-4 rounded-full text-base hover:bg-[#1DD1A1] hover:text-[#1B2A45] transition-all duration-300 shadow-xl inline-flex items-center gap-2 group">
-              Let&apos;s chat <span className="text-xl group-hover:rotate-12 transition-transform duration-300">💬</span>
-            </button>
-          </motion.div>
 
         </div>
       </section>
@@ -496,7 +397,7 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-20 bg-[#1B2A45] text-white relative overflow-hidden">
+      <section className="py-20 bg-[#0A0A0A] text-white relative overflow-hidden">
         {/* Background Image Overlay */}
         <div className="absolute inset-0 opacity-10">
           <Image
@@ -605,17 +506,17 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="text-white font-bold text-lg mb-4 bg-[#1B2A45] px-4 py-2 rounded-full inline-block">
                 FAQs
               </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B2A45] mb-6">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
                 Frequently Asked Questions
               </h2>
-              <p className="text-text/80 text-lg mb-8 leading-relaxed">
+              <p className="text-white/70 text-lg mb-8 leading-relaxed">
                 Book a strategy call and we&apos;ll assess your current digital infrastructure, lead flow, and growth opportunities.
               </p>
 
@@ -752,7 +653,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="py-20 bg-[#1B2A45] relative overflow-hidden">
+      <section id="contact" className="py-20 bg-[#0A0A0A] relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#1DD1A1]/5 skew-x-12 transform origin-top-right"></div>
 

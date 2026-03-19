@@ -30,14 +30,14 @@ export default function FAQAccordion({ items, className = '' }: FAQAccordionProp
                 return (
                     <div
                         key={item.id}
-                        className={`border-2 rounded-2xl overflow-hidden bg-white transition-colors duration-300 ${isOpen ? 'border-[#1DD1A1]' : 'border-[#E2E8F0]'
+                        className={`border-2 rounded-2xl overflow-hidden bg-[#1a1a1a] transition-colors duration-300 ${isOpen ? 'border-[#1DD1A1]' : 'border-white/10'
                             }`}
                     >
                         <button
                             onClick={() => toggleItem(item.id)}
-                            className="w-full flex items-center justify-between p-6 text-left hover:bg-[#F0F4F8] transition-colors"
+                            className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
                         >
-                            <span className={`text-base font-bold pr-4 transition-colors ${isOpen ? 'text-[#1B2A45]' : 'text-[#1B2A45]/80'}`}>
+                            <span className={`text-base font-bold pr-4 transition-colors ${isOpen ? 'text-white' : 'text-white/80'}`}>
                                 {item.question}
                             </span>
                             <motion.div
@@ -63,7 +63,7 @@ export default function FAQAccordion({ items, className = '' }: FAQAccordionProp
                                     style={{ overflow: 'hidden' }}
                                 >
                                     <div className="px-6 pb-6 pt-0">
-                                        <p className="text-[#1B2A45]/65 leading-relaxed">{item.answer}</p>
+                                        <p className="text-white/60 leading-relaxed">{item.answer}</p>
                                     </div>
                                 </motion.div>
                             )}
