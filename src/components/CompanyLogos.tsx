@@ -37,7 +37,7 @@ export default function CompanyLogos({ logos, title = "Trusted by Leading Franch
                         {repeated.map((logo, index) => (
                             <div
                                 key={`logo-${logo.id}-${index}`}
-                                className="relative h-10 md:h-14 w-28 md:w-36 flex items-center justify-center shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-300"
+                                className="relative h-24 md:h-32 w-48 md:w-64 flex items-center justify-center shrink-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
                             >
                                 <Image
                                     src={logo.url}

@@ -202,10 +202,19 @@ export default function Home() {
         <CompanyLogos
           title="Trusted by Leading Franchise Systems"
           logos={[
-            { id: 1, url: "https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/logo-demo1.png" },
-            { id: 2, url: "https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/logo-demo2.png" },
-            { id: 3, url: "https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/logo-demo3.png" },
-            { id: 4, url: "https://elementor.altdesain.com/cleansy/wp-content/uploads/2025/04/logo-demo4.png" }
+            { id: 1,  url: "/logos/12.svg", alt: "Partner Logo 1" },
+            { id: 2,  url: "/logos/13.svg", alt: "Partner Logo 2" },
+            { id: 3,  url: "/logos/14.svg", alt: "Partner Logo 3" },
+            { id: 4,  url: "/logos/15.svg", alt: "Partner Logo 4" },
+            { id: 5,  url: "/logos/16.svg", alt: "Partner Logo 5" },
+            { id: 6,  url: "/logos/17.svg", alt: "Partner Logo 6" },
+            { id: 7,  url: "/logos/18.svg", alt: "Partner Logo 7" },
+            { id: 8,  url: "/logos/19.svg", alt: "Partner Logo 8" },
+            { id: 9,  url: "/logos/20.svg", alt: "Partner Logo 9" },
+            { id: 10, url: "/logos/21.svg", alt: "Partner Logo 10" },
+            { id: 11, url: "/logos/22.svg", alt: "Partner Logo 11" },
+            { id: 12, url: "/logos/23.svg", alt: "Partner Logo 12" },
+            { id: 13, url: "/logos/24.svg", alt: "Partner Logo 13" },
           ]}
         />
       </section>
